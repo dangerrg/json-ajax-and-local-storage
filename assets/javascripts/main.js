@@ -114,7 +114,15 @@ const getRemoteTags = function() {
   request.send();
 };
 
-getRemoteTags();
+if (localStorage.getItem('savedTags')) {
+  let tagsAsJson = localStorage.getItem('savedTags')
+  let tags = JSON.parse(tagsAsJson);
+
+  let tagList = new TagList(tags);
+  tagList.renderAllTags();
+} else {
+  getRemoteTags();
+}
 
 // Task 2: parse the response body from tasks 2 and use these objects to
 // render the tags on the page instead of the staticTags.
