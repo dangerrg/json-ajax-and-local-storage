@@ -103,6 +103,11 @@ const getRemoteTags = function() {
 
   request.onload = function() {
     console.log(request.responseText);
+
+    let tags = JSON.parse(request.responseText);
+
+    let tagList = new TagList(tags.tags);
+    tagList.renderAllTags();
   };
 
   request.send();
@@ -121,5 +126,4 @@ getRemoteTags();
 
 const staticTags = [ new Tag('Nature') ];
 
-let tagList = new TagList(staticTags);
-tagList.renderAllTags();
+
