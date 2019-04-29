@@ -84,6 +84,7 @@ TagList.prototype.removeTag = function(e) {
 
   // Task 3: Store the array of Tags in local storage using the key
   //         'savedTags' as a JSON string.
+  localStorage.setItem('savedTags', JSON.stringify(this.allTags));
 };
 
 document.getElementById('resetTags').addEventListener('click', function(e) {
